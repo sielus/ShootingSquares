@@ -422,7 +422,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 7
   jumpCount: 2
-  rigidbody2D: {fileID: 0}
+  rigidbody2D: {fileID: 916326352}
   jumpForce: 0
   health: 100
 --- !u!61 &916326351

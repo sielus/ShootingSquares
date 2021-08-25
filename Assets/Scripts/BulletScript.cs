@@ -28,19 +28,21 @@ public class BulletScript : MonoBehaviour {
         }
     }
     public void OnCollisionEnter2D(Collision2D collision) {
-        Debug.Log(collision.gameObject.name);
-        Debug.Log(gameObject.name);
-
+     // Debug.Log(collision.gameObject.name);
+     //   Debug.Log(gameObject.name);
         if (gameObject.name != collision.gameObject.name) {
             if (collision.gameObject.name == "Enemy") {
                 EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
                 if (enemy != null) {
                     enemy.takeDamage(dmg);
+                    Destroy(gameObject);
                 }
             } else if (collision.gameObject.name == "Player") {
                 PlayerController player = collision.gameObject.GetComponent<PlayerController>();
                 if (player != null) {
                     player.takeDamage(dmg);
+                    Destroy(gameObject);
+
                 }
             }
         }
