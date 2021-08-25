@@ -20,7 +20,7 @@ public class EnemyShootingScript : MonoBehaviour {
     }
 
     private void shoot() {
-        Instantiate(bullet, firePoint.position, firePoint.rotation);
+        Instantiate(bullet, firePoint.position, firePoint.rotation).name = "Enemy";
     }
 
     private void faceMouse() {

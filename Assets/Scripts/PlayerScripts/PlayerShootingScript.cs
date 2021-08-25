@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShootingScript : MonoBehaviour{
+public class PlayerShootingScript : MonoBehaviour {
     public Transform gunHolder;
     public Transform firePoint;
     public GameObject bullet;
     private Vector2 direction;
-    void Start(){
-        
+    void Start() {
+
     }
 
-    void Update(){
+    void Update() {
         this.movingGun();
 
         if (Input.GetButtonDown("Fire1")) {
@@ -20,7 +20,7 @@ public class ShootingScript : MonoBehaviour{
     }
 
     private void shoot() {
-        Instantiate(bullet, firePoint.position, firePoint.rotation);
+        Instantiate(bullet, firePoint.position, firePoint.rotation).name = "Player";
     }
 
     private void faceMouse() {
@@ -33,3 +33,4 @@ public class ShootingScript : MonoBehaviour{
         this.faceMouse();
     }
 }
+
