@@ -46,4 +46,8 @@ public class PlayerController : MonoBehaviour{
         this.jumpCount = this.jumpCount - 1;
         rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
     }
+
+    public int getPlayerHealth() {
+        return this.health;
+    }
 }
