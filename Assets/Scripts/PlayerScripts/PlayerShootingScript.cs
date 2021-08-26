@@ -21,6 +21,8 @@ public class PlayerShootingScript : MonoBehaviour {
 
     private void shoot() {
         Instantiate(bullet, firePoint.position, firePoint.rotation).name = "Player";
+        FindObjectOfType<AudioManager>().play("shoot");
+
     }
 
     private void faceMouse() {

@@ -18,12 +18,14 @@ public class PlayerController : MonoBehaviour{
     public void takeDamage(int dmg) {
         health = health - dmg;
         Debug.Log(gameObject.name);
+        FindObjectOfType<AudioManager>().play("dmg");
         if (health <= 0) {
             die();
         }
     }
 
     void die() {
+        FindObjectOfType<AudioManager>().play("death");
         Destroy(gameObject);
     }
 
@@ -45,6 +47,7 @@ public class PlayerController : MonoBehaviour{
     private void jump() {
         this.jumpCount = this.jumpCount - 1;
         rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+        FindObjectOfType<AudioManager>().play("jump");
     }
 
     public int getPlayerHealth() {
