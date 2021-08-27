@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour{
     public Rigidbody2D rigidbody2D;
     public float jumpForce;
     public int health = 100;
+    public ParticleSystem dust;
+
     void Start(){
        
     }
@@ -47,9 +49,13 @@ public class PlayerController : MonoBehaviour{
         this.jumpCount = this.jumpCount - 1;
         rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         FindObjectOfType<AudioManager>().play("jump");
+        this.createDust();
     }
 
     public int getPlayerHealth() {
         return this.health;
+    }
+    void createDust() {
+        dust.Play();
     }
 }
