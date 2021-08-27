@@ -18,13 +18,14 @@ public class EnemyController : MonoBehaviour{
     }
     public void takeDamage(int dmg) {
         health = health - dmg;
-        Debug.Log(gameObject.name);
+        FindObjectOfType<AudioManager>().play("dmg");
         if (health <= 0) {
             die();
         }
     }
 
     void die() {
+        FindObjectOfType<AudioManager>().play("death");
         Destroy(gameObject);
     }
     void OnCollisionEnter2D(Collision2D collision) {

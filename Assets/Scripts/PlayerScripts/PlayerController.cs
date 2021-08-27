@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour{
     }
     public void takeDamage(int dmg) {
         health = health - dmg;
-        Debug.Log(gameObject.name);
         FindObjectOfType<AudioManager>().play("dmg");
         if (health <= 0) {
             die();
