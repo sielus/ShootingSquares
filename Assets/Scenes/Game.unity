@@ -259,7 +259,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 15.280733
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -483,10 +483,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 7
-  jumpCount: 2
   rigidbody2D: {fileID: 916326352}
-  jumpForce: 0
   health: 100
+  stoppingDistance: 10
+  retratDistance: 5
 --- !u!61 &916326351
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -742,7 +742,7 @@ Transform:
   m_GameObject: {fileID: 1196568835}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -4, z: 0}
-  m_LocalScale: {x: 20, y: 0.4, z: 1}
+  m_LocalScale: {x: 53.67, y: 0.4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2

@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour{
         if (runTimer) {
             this.timer += Time.deltaTime;
             float seconds = timer % 60;
-            if (seconds >= 0.1) {
+            if (seconds >= 0.1) { // dmg effect
                 this.timer = 0.0f;
                 this.runTimer = false;
                 this.spriteRender.color = Color.white;
@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour{
         this.health = health - dmg;
         FindObjectOfType<AudioManager>().play("dmg");
         this.runTimer = true;
+        rigidbody2D.AddForce(new Vector2(0, 4), ForceMode2D.Impulse);
+
         if (runTimer) {
             this.spriteRender.color = Color.red;
         }

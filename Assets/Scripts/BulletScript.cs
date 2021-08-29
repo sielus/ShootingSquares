@@ -28,7 +28,7 @@ public class BulletScript : MonoBehaviour {
         }
     }
     public void OnCollisionEnter2D(Collision2D collision) {
-     // Debug.Log(collision.gameObject.name);
+    Debug.Log(collision.gameObject.name);
      //   Debug.Log(gameObject.name);
         if (gameObject.name != collision.gameObject.name) {
             if (collision.gameObject.name == "Enemy") {

@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour{
     public float movementSpeed = 7;
-    public int jumpCount = 2;
+    public float jumpForce = 8;
+    public ParticleSystem dust;
+
+
     public Rigidbody2D rigidbody2D;
-    public float jumpForce;
     public int health = 100;
 
-    void Start() {
+    private GameObject playerTarget;
+    public float stoppingDistance;
+    public float retratDistance;
 
+    void Start() {
+        this.playerTarget = GameObject.Find("Player");
     }
 
     void Update() {
@@ -19,6 +25,8 @@ public class EnemyController : MonoBehaviour{
     public void takeDamage(int dmg) {
         health = health - dmg;
         FindObjectOfType<AudioManager>().play("dmg");
+        this.jump();
+
         if (health <= 0) {
             die();
         }
@@ -28,23 +36,26 @@ public class EnemyController : MonoBehaviour{
         FindObjectOfType<AudioManager>().play("death");
         Destroy(gameObject);
     }
-    void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.tag.Equals("Floor")) {
-            this.jumpCount = 2;
-        }
-    }
-
 
     private void playerMoving() {
-        var horizontalInput = Input.GetAxis("Horizontal");
-        transform.position = transform.position + new Vector3(horizontalInput * movementSpeed * Time.deltaTime, 0, 0);
-        if (Input.GetButtonDown("Jump") && jumpCount > 0) {
+        if (Vector2.Distance(this.transform.position, this.playerTarget.transform.position) > this.stoppingDistance) {
+            this.transform.position = Vector2.MoveTowards(this.transform.position, this.playerTarget.transform.position, movementSpeed * Time.deltaTime);
+        } else if (Vector2.Distance(this.transform.position, this.playerTarget.transform.position) < this.stoppingDistance &&
+             Vector2.Distance(this.transform.position, this.playerTarget.transform.position) > this.retratDistance) {
+            this.transform.position = this.transform.position;
+        } else if (Vector2.Distance(this.transform.position, this.playerTarget.transform.position) < this.retratDistance) {
             this.jump();
+            this.transform.position = Vector2.MoveTowards(this.transform.position, this.playerTarget.transform.position, -movementSpeed * Time.deltaTime);
         }
     }
 
     private void jump() {
-        this.jumpCount = this.jumpCount - 1;
         rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+        FindObjectOfType<AudioManager>().play("jump");
+        this.createDust();
+    }
+
+    void createDust() {
+        dust.Play();
     }
 }

@@ -7,6 +7,7 @@ public class EnemyShootingScript : MonoBehaviour {
     public Transform firePoint;
     public GameObject bullet;
     private Vector2 direction;
+    private float timer = 0;
     void Start() {
 
     }
@@ -14,13 +15,19 @@ public class EnemyShootingScript : MonoBehaviour {
     void Update() {
         this.movingGun();
 
-        if (Input.GetButtonDown("Fire1")) {
+        this.timer += Time.deltaTime;
+        float seconds = timer % 60;
+        if (seconds >= 1.5) {
+            this.timer = 0.0f;
             this.shoot();
         }
+
     }
 
     private void shoot() {
         Instantiate(bullet, firePoint.position, firePoint.rotation).name = "Enemy";
+        FindObjectOfType<AudioManager>().play("shoot");
+
     }
 
     private void faceMouse() {
@@ -28,8 +35,12 @@ public class EnemyShootingScript : MonoBehaviour {
     }
 
     private void movingGun() {
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        this.direction = mousePosition - (Vector2)this.gunHolder.position;
-        this.faceMouse();
+        GameObject player = GameObject.Find("Player");
+        Debug.Log(player.transform.position);
+        if (player != null) {
+            Vector2 mousePosition = player.transform.position;
+            this.direction = mousePosition - (Vector2)this.gunHolder.position;
+            this.faceMouse();
+        }
     }
 }
