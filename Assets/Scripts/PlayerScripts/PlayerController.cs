@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour{
@@ -9,19 +10,37 @@ public class PlayerController : MonoBehaviour{
     public float jumpForce;
     public int health = 100;
     public ParticleSystem dust;
+    private SpriteRenderer spriteRender;
+
+    private bool runTimer = false; // for dmg effect
+    private float timer = 0f; // for dmg effect
 
     void Start(){
-       
+        this.spriteRender = gameObject.GetComponent<SpriteRenderer>();
     }
 
     void Update(){
         playerMoving();
+        if (runTimer) {
+            this.timer += Time.deltaTime;
+            float seconds = timer % 60;
+            if (seconds >= 0.1) {
+                this.timer = 0.0f;
+                this.runTimer = false;
+                this.spriteRender.color = Color.white;
+            }
+        }
     }
-    public void takeDamage(int dmg) {
-        health = health - dmg;
+    public async void takeDamage(int dmg) {
+        this.health = health - dmg;
         FindObjectOfType<AudioManager>().play("dmg");
+        this.runTimer = true;
+        if (runTimer) {
+            this.spriteRender.color = Color.red;
+        }
+
         if (health <= 0) {
-            die();
+            this.die();
         }
     }
 
