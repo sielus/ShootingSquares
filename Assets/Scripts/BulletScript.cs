@@ -9,15 +9,16 @@ public class BulletScript : MonoBehaviour {
     public Material enemyBulletTrail;
 
 
+
     void Start() {
         this.rigidbody2D.velocity = transform.right * this.bulletSpeed;
     }
 
     void Update() {
-        if (this.gameObject.name == "Enemy") {
-            this.gameObject.transform.GetComponentInParent<TrailRenderer>().material = this.enemyBulletTrail;
-        } else {
+        if (this.gameObject.name == "Player") {
             this.gameObject.transform.GetComponentInParent<TrailRenderer>().material = this.playerBulletTrail;
+        } else {
+            this.gameObject.transform.GetComponentInParent<TrailRenderer>().material = this.enemyBulletTrail;
         }
     }
 
@@ -36,11 +37,6 @@ public class BulletScript : MonoBehaviour {
         }
     }
     public void OnCollisionEnter2D(Collision2D collision) {
-        Debug.Log(" collision enemy name " + collision.gameObject.name);
-        Debug.Log(" gameObject.name " + gameObject.name);
-
-
-
         if (gameObject.name != collision.gameObject.name) {
             if (collision.gameObject.name == "Enemy(Clone)") {
                 EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
