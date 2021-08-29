@@ -36,12 +36,13 @@ public class BulletScript : MonoBehaviour {
         }
     }
     public void OnCollisionEnter2D(Collision2D collision) {
-        Debug.Log("enemy name " + collision.gameObject.name);
+        Debug.Log(" collision enemy name " + collision.gameObject.name);
+        Debug.Log(" gameObject.name " + gameObject.name);
 
 
-        
+
         if (gameObject.name != collision.gameObject.name) {
-            if (collision.gameObject.name == "Enemy(Clone)" || collision.gameObject.name == "Enemy") {
+            if (collision.gameObject.name == "Enemy(Clone)") {
                 EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
                 if (enemy != null) {
                     enemy.takeDamage(dmg);

@@ -8,7 +8,6 @@ public class EnemyShootingScript : MonoBehaviour {
     public Transform firePoint;
     public GameObject bullet;
     private Vector2 direction;
-    public string enemyName;
     public double shootDelay = 1.5;
     private float timer = 0;
     void Start() {
@@ -22,7 +21,7 @@ public class EnemyShootingScript : MonoBehaviour {
         float seconds = timer % 60;
         if (seconds >= shootDelay) {
             this.timer = 0.0f;
-          //  this.shoot();
+            this.shoot();
         }
 
         int heath = enemyController.getHeath();
@@ -35,7 +34,7 @@ public class EnemyShootingScript : MonoBehaviour {
     }
 
     private void shoot() {
-        Instantiate(bullet, firePoint.position, firePoint.rotation).name = enemyName;
+        Instantiate(bullet, firePoint.position, firePoint.rotation).name = "Enemy(Clone)";
         FindObjectOfType<AudioManager>().play("shoot");
 
     }
