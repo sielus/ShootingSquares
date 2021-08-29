@@ -1,16 +1,24 @@
+using System.Collections;
 using UnityEngine;
 
 public class BulletScript : MonoBehaviour {
     public Rigidbody2D rigidbody2D;
     public float bulletSpeed = 20f;
     public int dmg = 10;
+    public Material playerBulletTrail;
+    public Material enemyBulletTrail;
+
 
     void Start() {
         this.rigidbody2D.velocity = transform.right * this.bulletSpeed;
     }
 
     void Update() {
-
+        if (this.gameObject.name == "Enemy") {
+            this.gameObject.transform.GetComponentInParent<TrailRenderer>().material = this.enemyBulletTrail;
+        } else {
+            this.gameObject.transform.GetComponentInParent<TrailRenderer>().material = this.playerBulletTrail;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
@@ -28,10 +36,12 @@ public class BulletScript : MonoBehaviour {
         }
     }
     public void OnCollisionEnter2D(Collision2D collision) {
-    Debug.Log(collision.gameObject.name);
-     //   Debug.Log(gameObject.name);
+        Debug.Log("enemy name " + collision.gameObject.name);
+
+
+        
         if (gameObject.name != collision.gameObject.name) {
-            if (collision.gameObject.name == "Enemy") {
+            if (collision.gameObject.name == "Enemy(Clone)" || collision.gameObject.name == "Enemy") {
                 EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
                 if (enemy != null) {
                     enemy.takeDamage(dmg);

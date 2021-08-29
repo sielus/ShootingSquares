@@ -9,7 +9,7 @@ public class EnemyController : MonoBehaviour{
 
 
     public Rigidbody2D rigidbody2D;
-    public int health = 100;
+    public int health;
 
     private GameObject playerTarget;
     public float stoppingDistance;
@@ -44,8 +44,8 @@ public class EnemyController : MonoBehaviour{
              Vector2.Distance(this.transform.position, this.playerTarget.transform.position) > this.retratDistance) {
             this.transform.position = this.transform.position;
         } else if (Vector2.Distance(this.transform.position, this.playerTarget.transform.position) < this.retratDistance) {
-            this.jump();
             this.transform.position = Vector2.MoveTowards(this.transform.position, this.playerTarget.transform.position, -movementSpeed * Time.deltaTime);
+ 
         }
     }
 
@@ -53,9 +53,14 @@ public class EnemyController : MonoBehaviour{
         rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         FindObjectOfType<AudioManager>().play("jump");
         this.createDust();
+
     }
 
     void createDust() {
         dust.Play();
+    }
+
+    public int getHeath() {
+        return this.health;
     }
 }
