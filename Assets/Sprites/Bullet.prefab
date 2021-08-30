@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 4438804599051805622}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.892, y: -0.002, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.1, z: 1}
+  m_LocalScale: {x: 0.1181788, y: 0.1181788, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 9038c29bb1b9da543bf5e0228c0c7a59, type: 3}
+  m_Sprite: {fileID: -2413806693520163455, guid: b42d780b843b08e428146ae0b33dbc45, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -150,6 +150,7 @@ MonoBehaviour:
   dmg: 10
   playerBulletTrail: {fileID: 2100000, guid: a5bc6b7312918c64d849cb6b23956b68, type: 2}
   enemyBulletTrail: {fileID: 2100000, guid: 0a85603b4c143304d831f00c6fe5fd99, type: 2}
+  bulletDestroyEffect: {fileID: 8912197255153073756, guid: cd4126d93ebf41044b6333c1d6aad0bc, type: 3}
 --- !u!96 &7405992253864508495
 TrailRenderer:
   serializedVersion: 2

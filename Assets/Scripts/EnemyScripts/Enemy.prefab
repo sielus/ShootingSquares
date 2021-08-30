@@ -150,6 +150,7 @@ MonoBehaviour:
   movementSpeed: 7
   jumpForce: 8
   dust: {fileID: 8356228839813659671}
+  deathEffect: {fileID: 5802657389752989960, guid: 44071087e77e3d44592eaec8a80de185, type: 3}
   rigidbody2D: {fileID: 2729120221046152550}
   health: 113
   stoppingDistance: 7

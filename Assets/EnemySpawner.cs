@@ -24,7 +24,7 @@ public class EnemySpawner : MonoBehaviour {
 
 
     private void spawnEnemy() {
-        if(this.enemies.Count != 4) {
+        if(this.enemies.Count != 1) {
             this.enemy.name = "Enemy";
             enemies.Add(this.enemy);
             Instantiate(enemy, new Vector2(0, 0), Quaternion.identity);

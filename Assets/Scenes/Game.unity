@@ -259,7 +259,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8.2
+  orthographic size: 8.671648
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -885,7 +885,7 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
+  m_UseAutoMass: 1
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
@@ -1006,6 +1006,7 @@ MonoBehaviour:
   jumpForce: 8
   health: 292
   dust: {fileID: 2115598499}
+  deathEffect: {fileID: 5802657389752989960, guid: 44071087e77e3d44592eaec8a80de185, type: 3}
 --- !u!114 &2020623870
 MonoBehaviour:
   m_ObjectHideFlags: 0

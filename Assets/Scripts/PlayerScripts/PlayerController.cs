@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour{
     public int health = 100;
     public ParticleSystem dust;
     private SpriteRenderer spriteRender;
+    public ParticleSystem deathEffect;
 
     private bool runTimer = false; // for dmg effect
     private float timer = 0f; // for dmg effect
@@ -48,6 +49,8 @@ public class PlayerController : MonoBehaviour{
 
     void die() {
         FindObjectOfType<AudioManager>().play("death");
+        deathEffect.startColor = Color.white;
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 

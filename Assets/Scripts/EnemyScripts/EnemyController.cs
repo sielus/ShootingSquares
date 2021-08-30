@@ -6,6 +6,7 @@ public class EnemyController : MonoBehaviour{
     public float movementSpeed = 7;
     public float jumpForce = 8;
     public ParticleSystem dust;
+    public ParticleSystem deathEffect;
 
 
     public Rigidbody2D rigidbody2D;
@@ -34,6 +35,9 @@ public class EnemyController : MonoBehaviour{
 
     void die() {
         FindObjectOfType<AudioManager>().play("death");
+        deathEffect.startColor = Color.red;
+        Instantiate(deathEffect,transform.position, Quaternion.identity);
+
         Destroy(gameObject);
     }
 
