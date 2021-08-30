@@ -66,7 +66,7 @@ public class BulletScript : MonoBehaviour {
         string collisionName = collision.gameObject.name;
         switch (collisionName) {
             case "Floor":
-                this.makeBulletDestroyEffect(collision.gameObject.GetComponentInParent<SpriteRenderer>().color, 0.25);
+                this.makeBulletDestroyEffect(collision.gameObject.GetComponentInParent<SpriteRenderer>().color, 0.4);
                 Destroy(gameObject);
                 break;
         }
