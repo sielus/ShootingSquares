@@ -7,6 +7,7 @@ public class EnemySpawner : MonoBehaviour {
     public ArrayList enemies = new ArrayList();
     public double spawnDelay = 2;
     private float timer = 0;
+    public int enemyMax = 5;
     void Start(){
         
     }
@@ -24,7 +25,7 @@ public class EnemySpawner : MonoBehaviour {
 
 
     private void spawnEnemy() {
-        if(this.enemies.Count != 1) {
+        if(this.enemies.Count != this.enemyMax) {
             this.enemy.name = "Enemy";
             enemies.Add(this.enemy);
             Instantiate(enemy, new Vector2(0, 0), Quaternion.identity);
