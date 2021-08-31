@@ -12,11 +12,14 @@ public class PlayerShootingScript : MonoBehaviour {
     }
 
     void Update() {
-        this.movingGun();
+        if (!PauseMenu.gamePause) {
+            this.movingGun();
 
-        if (Input.GetButtonDown("Fire1")) {
-            this.shoot();
+            if (Input.GetButtonDown("Fire1")) {
+                this.shoot();
+            }
         }
+
     }
 
     private void shoot() {
