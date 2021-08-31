@@ -28,7 +28,7 @@ public class EnemySpawner : MonoBehaviour {
         if(this.enemies.Count != this.enemyMax) {
             this.enemy.name = "Enemy";
             enemies.Add(this.enemy);
-            Instantiate(enemy, new Vector2(0, 0), Quaternion.identity);
+            Instantiate(enemy, new Vector2(Random.Range(-20.0f, 20.0f), 0), Quaternion.identity);
         }
     }
 

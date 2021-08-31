@@ -27,10 +27,10 @@ MonoBehaviour:
     value: {x: 0.5, y: 0.5}
   intensity:
     overrideState: 1
-    value: 0.45
+    value: 0.297
   smoothness:
     overrideState: 1
-    value: 0.228
+    value: 0.545
   roundness:
     overrideState: 0
     value: 1
@@ -77,16 +77,16 @@ MonoBehaviour:
     overrideState: 1
     value: 1
   focusDistance:
-    overrideState: 0
+    overrideState: 1
     value: 10
   aperture:
-    overrideState: 0
-    value: 5.6
+    overrideState: 1
+    value: 10.3
   focalLength:
-    overrideState: 0
-    value: 50
+    overrideState: 1
+    value: 160
   kernelSize:
-    overrideState: 0
+    overrideState: 1
     value: 1
 --- !u!114 &8544131351061128508
 MonoBehaviour:
