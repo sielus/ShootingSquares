@@ -9,7 +9,9 @@ public class CameraFollowScript : MonoBehaviour {
     public Vector3 offset;
     public PostProcessVolume effects;
     public AudioSource audioSource;
-    public GameObject points;
+    public GameObject pointsText;
+    public GameObject currentAmmoText;
+
 
     public void Update() {
         if (PauseMenu.gamePause) {
@@ -19,6 +21,7 @@ public class CameraFollowScript : MonoBehaviour {
             effects.enabled = false;
             this.audioSource.UnPause();
             this.printPoints();
+            this.printAmmo();
         }
     }
 
@@ -34,7 +37,14 @@ public class CameraFollowScript : MonoBehaviour {
     
     private void printPoints() {
         PlayerController player = target.gameObject.GetComponent<PlayerController>();
-        points.GetComponent<TMPro.TextMeshProUGUI>().text = "POINTS : " + player.getPoints();
+        pointsText.GetComponent<TMPro.TextMeshProUGUI>().text = "POINTS : " + player.getPoints();
+        PlayerShootingScript gunConfig = target.gameObject.GetComponentInChildren<PlayerShootingScript>();
+        gunConfig.addPurchasedGun("ShotGun");
 
+    }
+
+    private void printAmmo() {
+        GunConfigScript gunConfig = target.gameObject.GetComponentInChildren<GunConfigScript>();
+        currentAmmoText.GetComponent<TMPro.TextMeshProUGUI>().text = gunConfig.getCurrentWeapon() + " | " + gunConfig.getCurrentAmmo() + " / " + gunConfig.getCurrentAmmoMax();
     }
 }

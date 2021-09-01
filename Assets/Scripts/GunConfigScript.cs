@@ -16,8 +16,6 @@ public class GunConfigScript : MonoBehaviour{
     public int ammoMagazineMax;
     public float reloadTime;
 
-    public bool purchased;
-
     void Start() {
         bulletSource = bullet.GetComponent<BulletScript>();
         this.currentAmmoMagazine = ammoMagazineMax;
@@ -41,7 +39,6 @@ public class GunConfigScript : MonoBehaviour{
     }
 
     private void shoot() {
-        Debug.LogError(gameObject.name);
         bulletSource.setBulletCustomDmg(gunDMG);
         bulletSource.setBullteCustomSpeed(bulletSpeed);
         Instantiate(bullet, firePoint.position, firePoint.rotation).name = "Player";
@@ -53,9 +50,16 @@ public class GunConfigScript : MonoBehaviour{
         this.currentAmmoMagazine = this.ammoMagazineMax;
     }
 
-    public bool getPurchased() {
-        return this.purchased;
+    public string getCurrentWeapon() {
+        return this.gameObject.name;
     }
 
+    public int getCurrentAmmo() {
+        return this.currentAmmoMagazine;
+    }
+
+    public int getCurrentAmmoMax() {
+        return this.ammoMagazineMax;
+    }
 
 }

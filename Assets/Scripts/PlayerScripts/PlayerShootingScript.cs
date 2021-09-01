@@ -12,7 +12,8 @@ public class PlayerShootingScript : MonoBehaviour {
     public GameObject currentGun;
 
     private int currentWeaponIndex;
-    public ArrayList purchasedWeapons;
+    public ArrayList purchasedWeapons = new ArrayList();
+
 
     void Start() {
         totalAllWeapons = gunHolder.transform.childCount;
@@ -25,7 +26,7 @@ public class PlayerShootingScript : MonoBehaviour {
         allGuns[0].SetActive(true);
         currentGun = allGuns[0];
         currentWeaponIndex = 0;
-
+        purchasedWeapons.Add(currentGun);
     }
 
     void Update() {
@@ -37,28 +38,39 @@ public class PlayerShootingScript : MonoBehaviour {
                 this.changeWeapon(true);
             }
         }
-
     }
-
+    
     private void changeWeapon(bool up) {
         if (up) {
-            if(currentWeaponIndex < totalAllWeapons - 1) {
-                allGuns[currentWeaponIndex].SetActive(false);
+            if(currentWeaponIndex < purchasedWeapons.Count - 1) {
+                GameObject oldWeapon = (GameObject)purchasedWeapons[currentWeaponIndex];
+                oldWeapon.SetActive(false);
+                purchasedWeapons[currentWeaponIndex] = oldWeapon;
+                
                 currentWeaponIndex += 1;
-                allGuns[currentWeaponIndex].SetActive(true);
-                currentGun = allGuns[currentWeaponIndex];
 
+                GameObject newWeapon = (GameObject)purchasedWeapons[currentWeaponIndex];
+                newWeapon.SetActive(true);
+                purchasedWeapons[currentWeaponIndex] = newWeapon;
+
+                currentGun = newWeapon;
             }
         } else {
             if (currentWeaponIndex > 0) {
-                allGuns[currentWeaponIndex].SetActive(false);
+                GameObject oldWeapon = (GameObject)purchasedWeapons[currentWeaponIndex];
+                oldWeapon.SetActive(false);
+                purchasedWeapons[currentWeaponIndex] = oldWeapon;
+
                 currentWeaponIndex -= 1;
-                allGuns[currentWeaponIndex].SetActive(true);
-                currentGun = allGuns[currentWeaponIndex];
+
+                GameObject newWeapon = (GameObject)purchasedWeapons[currentWeaponIndex];
+                newWeapon.SetActive(true);
+                purchasedWeapons[currentWeaponIndex] = newWeapon;
+
+                currentGun = newWeapon;
             }
         }
-        GunConfigScript gunConfig = currentGun.GetComponent<GunConfigScript>();
-        Debug.LogError(currentGun.name + " " + gunConfig.getPurchased());
+      //  GunConfigScript gunConfig = currentGun.GetComponent<GunConfigScript>();
     }
 
 
@@ -71,6 +83,16 @@ public class PlayerShootingScript : MonoBehaviour {
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         this.direction = mousePosition - (Vector2)this.gunHolder.position;
         this.faceMouse();
+    }
+
+    public void addPurchasedGun(string name) {
+        foreach (GameObject gun in allGuns) {
+            if (gun.name.Equals(name)) {
+                this.purchasedWeapons.Add(gun);
+            }
+        }
+       // GameObject newWeapon = allGuns[1];
+        //purchasedWeapons.Add(newWeapon);
     }
 }
 
