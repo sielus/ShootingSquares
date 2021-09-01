@@ -155,6 +155,7 @@ MonoBehaviour:
   health: 113
   stoppingDistance: 7
   retratDistance: 4
+  enemyHeadPoints: 15
 --- !u!114 &2729120221046152571
 MonoBehaviour:
   m_ObjectHideFlags: 0

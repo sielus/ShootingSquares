@@ -1,10 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.Rendering.PostProcessing;
-using UnityEngine.Rendering.Universal;
-using UnityEngine.UI;
+using TMPro;
 
 public class CameraFollowScript : MonoBehaviour {
     public Transform target;
@@ -12,12 +8,17 @@ public class CameraFollowScript : MonoBehaviour {
     public float smoothSpeed;
     public Vector3 offset;
     public PostProcessVolume effects;
+    public AudioSource audioSource;
+    public GameObject points;
 
     public void Update() {
         if (PauseMenu.gamePause) {
             effects.enabled = true;
+            this.audioSource.Pause();
         } else {
             effects.enabled = false;
+            this.audioSource.UnPause();
+            this.printPoints();
         }
     }
 
@@ -29,5 +30,11 @@ public class CameraFollowScript : MonoBehaviour {
         Vector3 desiredPosition = target.position + offset;
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.fixedDeltaTime);
         transform.position = smoothedPosition;
+    }
+    
+    private void printPoints() {
+        PlayerController player = target.gameObject.GetComponent<PlayerController>();
+        points.GetComponent<TMPro.TextMeshProUGUI>().text = "POINTS : " + player.getPoints();
+
     }
 }

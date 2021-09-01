@@ -15,6 +15,7 @@ public class EnemyController : MonoBehaviour{
     private GameObject playerTarget;
     public float stoppingDistance;
     public float retratDistance;
+    public int enemyHeadPoints = 15;
 
     void Start() {
         this.playerTarget = GameObject.Find("Player");
@@ -27,13 +28,14 @@ public class EnemyController : MonoBehaviour{
         health = health - dmg;
         FindObjectOfType<AudioManager>().play("dmg");
         this.jump();
-
         if (health <= 0) {
             die();
         }
     }
 
     void die() {
+        PlayerController player = this.playerTarget.GetComponent<PlayerController>();
+        player.addPoints(this.enemyHeadPoints);
         FindObjectOfType<AudioManager>().play("death");
         deathEffect.startColor = Color.red;
         Instantiate(deathEffect,transform.position, Quaternion.identity);

@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour{
     public ParticleSystem dust;
     private SpriteRenderer spriteRender;
     public ParticleSystem deathEffect;
+    private int playerPoints = 0;
 
     private bool runTimer = false; // for dmg effect
     private float timer = 0f; // for dmg effect
@@ -81,5 +82,17 @@ public class PlayerController : MonoBehaviour{
     }
     void createDust() {
         dust.Play();
+    }
+
+    public int getPoints() {
+        return this.playerPoints;
+    }
+
+    public void addPoints(int points) {
+        this.playerPoints += points;
+    }
+
+    public void takePoints(int points) {
+        this.playerPoints -= points;
     }
 }
