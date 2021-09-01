@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour {
     public Rigidbody2D rigidbody2D;
-    public float bulletSpeed = 20f;
-    public int dmg = 10;
+    public float bulletSpeed;
+    public int dmg;
     public Material playerBulletTrail;
     public Material enemyBulletTrail;
     public ParticleSystem bulletDestroyEffect;
@@ -76,6 +76,14 @@ public class BulletScript : MonoBehaviour {
         this.bulletDestroyEffect.startColor = effectColor;
         Vector2 position = new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.y + (float)plusY);
         Instantiate(this.bulletDestroyEffect, position, Quaternion.identity);
+    }
+
+    public void setBullteCustomSpeed(float speed) {
+        this.bulletSpeed = speed;
+    }
+
+    public void setBulletCustomDmg(int dmg) {
+        this.dmg = dmg;
     }
 
 
