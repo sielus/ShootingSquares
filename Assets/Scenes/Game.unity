@@ -1506,6 +1506,7 @@ MonoBehaviour:
   bullet: {fileID: 4438804599051805622, guid: 022ce5e1005e90c4ca541d7140e99eed, type: 3}
   gunDMG: 77
   bulletSpeed: 7
+  fireRate: 1
 --- !u!1 &632883409
 GameObject:
   m_ObjectHideFlags: 0
@@ -2902,6 +2903,7 @@ MonoBehaviour:
   bullet: {fileID: 4438804599051805622, guid: 022ce5e1005e90c4ca541d7140e99eed, type: 3}
   gunDMG: 33
   bulletSpeed: 11
+  fireRate: 7
 --- !u!1 &1733526418
 GameObject:
   m_ObjectHideFlags: 0
