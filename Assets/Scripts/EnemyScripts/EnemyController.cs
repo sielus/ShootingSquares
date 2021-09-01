@@ -69,4 +69,5 @@ public class EnemyController : MonoBehaviour{
     public int getHeath() {
         return this.health;
     }
+
 }

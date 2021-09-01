@@ -24,9 +24,10 @@ public class EnemyShootingScript : MonoBehaviour {
             this.shoot();
         }
 
+
         int heath = enemyController.getHeath();
 
-        if (heath <= 60 && heath >= 31) {
+        if (heath <= 45 && heath >= 31) {
             this.shootDelay = 0.68;
         }else if (heath <= 30) {
             this.shootDelay = 0.28;

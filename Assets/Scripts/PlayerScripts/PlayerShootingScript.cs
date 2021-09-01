@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class PlayerShootingScript : MonoBehaviour {
     public Transform gunHolder;
-    public Transform firePoint;
-    public GameObject bullet;
     private Vector2 direction;
+
     void Start() {
 
     }
@@ -14,19 +13,11 @@ public class PlayerShootingScript : MonoBehaviour {
     void Update() {
         if (!PauseMenu.gamePause) {
             this.movingGun();
-
-            if (Input.GetButtonDown("Fire1")) {
-                this.shoot();
-            }
         }
 
     }
 
-    private void shoot() {
-        Instantiate(bullet, firePoint.position, firePoint.rotation).name = "Player";
-        FindObjectOfType<AudioManager>().play("shoot");
 
-    }
 
     private void faceMouse() {
         this.gunHolder.transform.right = direction;
