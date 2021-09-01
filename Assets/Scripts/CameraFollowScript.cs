@@ -45,6 +45,8 @@ public class CameraFollowScript : MonoBehaviour {
 
     private void printAmmo() {
         GunConfigScript gunConfig = target.gameObject.GetComponentInChildren<GunConfigScript>();
-        currentAmmoText.GetComponent<TMPro.TextMeshProUGUI>().text = gunConfig.getCurrentWeapon() + " | " + gunConfig.getCurrentAmmo() + " / " + gunConfig.getCurrentAmmoMax();
+        currentAmmoText.GetComponent<TMPro.TextMeshProUGUI>().text = gunConfig.getCurrentWeapon() + " | " 
+            + gunConfig.getCurrentAmmo() + " / "
+            + gunConfig.getCurrentAmmoMax();
     }
 }
