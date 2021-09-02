@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour{
     private SpriteRenderer spriteRender;
     public ParticleSystem deathEffect;
     private int playerPoints = 0;
+    public static bool playerIsDead = false;
 
     private bool runTimer = false; // for dmg effect
     private float timer = 0f; // for dmg effect
@@ -44,6 +45,7 @@ public class PlayerController : MonoBehaviour{
         }
 
         if (health <= 0) {
+            playerIsDead = true;
             this.die();
         }
     }

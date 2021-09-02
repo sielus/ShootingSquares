@@ -29,7 +29,9 @@ public class EnemyController : MonoBehaviour{
     }
 
     void Update() {
-        playerMoving();
+        if(playerTarget != null) {
+            playerMoving();
+        }
     }
     public void takeDamage(int dmg) {
         health = health - dmg;

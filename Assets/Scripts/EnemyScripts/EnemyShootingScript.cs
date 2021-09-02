@@ -15,16 +15,16 @@ public class EnemyShootingScript : MonoBehaviour {
     }
 
     void Update() {
-        this.movingGun();
 
-        this.timer += Time.deltaTime;
-        float seconds = timer % 60;
-        if (seconds >= shootDelay) {
-            this.timer = 0.0f;
-            this.shoot();
+        if (!PlayerController.playerIsDead) {
+            this.movingGun();
+            this.timer += Time.deltaTime;
+            float seconds = timer % 60;
+            if (seconds >= shootDelay) {
+                this.timer = 0.0f;
+                this.shoot();
+            }
         }
-
-
         int heath = enemyController.getHeath();
 
         if (heath <= 45 && heath >= 31) {

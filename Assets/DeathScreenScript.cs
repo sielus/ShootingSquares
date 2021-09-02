@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
+
 
 public class DeathScreenScript : MonoBehaviour {
     public GameObject gameHandler;
     private GameHandler handler;
-
-
     public GameObject[] buttons;
     private int totalAllButtons;
+
+
 
 
     void Start(){
@@ -18,6 +20,7 @@ public class DeathScreenScript : MonoBehaviour {
         for (int index = 0; index < totalAllButtons; index++) {
             buttons[index] = this.transform.GetChild(index).gameObject;
         }
+
     }
 
     void Update(){
