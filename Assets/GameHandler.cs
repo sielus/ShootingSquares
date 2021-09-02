@@ -79,4 +79,7 @@ public class GameHandler : MonoBehaviour{
     public void buyWeapon(string weapon) {
         playerShooting.addPurchasedGun(weapon);
     }
+    public int getPlayerHealth() {
+        return playerController.getPlayerHealth();
+    }
 }

@@ -10,7 +10,7 @@ public class HealthBar : MonoBehaviour {
     }
 
     void Update() {
-        if(player.getPlayerHealth() >= 0) {
+        if(player.getPlayerHealth() > 1) {
             setSize((float)player.getPlayerHealth() / 100);
         }
     }

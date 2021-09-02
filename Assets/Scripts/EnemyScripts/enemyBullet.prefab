@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1128394356666341801}
   - component: {fileID: 1248502744905501843}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: enemyBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody2D: {fileID: 5335922598994269039}
-  bulletSpeed: 15
+  bulletSpeed: 25
   dmg: 5
   playerBulletTrail: {fileID: 2100000, guid: a5bc6b7312918c64d849cb6b23956b68, type: 2}
   enemyBulletTrail: {fileID: 2100000, guid: 0a85603b4c143304d831f00c6fe5fd99, type: 2}
