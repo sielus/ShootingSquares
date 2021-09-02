@@ -9,9 +9,6 @@ public class BulletScript : MonoBehaviour {
     public Material enemyBulletTrail;
     public ParticleSystem bulletDestroyEffect;
 
-
-
-
     void Start() {
         this.rigidbody2D.velocity = transform.right * this.bulletSpeed;
     }
@@ -59,9 +56,6 @@ public class BulletScript : MonoBehaviour {
                 }
             }
         }
-
-
-
 
         string collisionName = collision.gameObject.name;
         switch (collisionName) {

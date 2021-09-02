@@ -10,7 +10,7 @@ public class GunConfigScript : MonoBehaviour{
     BulletScript bulletSource;
     public float fireRate;
     private float readyForNextShoot;
-    private float timer = 0;
+    private float readyForNextReload;
 
     public int currentAmmoMagazine;
     public int ammoMagazineMax;
@@ -29,12 +29,12 @@ public class GunConfigScript : MonoBehaviour{
                     this.shoot();
                 }
             } else {
-                this.reload();
+                StartCoroutine(this.reload());
             }
         }
 
         if (Input.GetKeyDown(KeyCode.R)) {
-            this.reload();
+            StartCoroutine(this.reload());
         }
     }
 
@@ -45,8 +45,9 @@ public class GunConfigScript : MonoBehaviour{
         FindObjectOfType<AudioManager>().play("shoot");
         this.currentAmmoMagazine -= 1;
     }
-    
-    private void reload() {
+
+    IEnumerator reload() {
+        yield return new WaitForSeconds(reloadTime);
         this.currentAmmoMagazine = this.ammoMagazineMax;
     }
 

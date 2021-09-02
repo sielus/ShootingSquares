@@ -11,6 +11,8 @@ public class CameraFollowScript : MonoBehaviour {
     public AudioSource audioSource;
     public GameObject pointsText;
     public GameObject currentAmmoText;
+    public GameObject enemyCountText;
+    public GameObject gameHandler;
 
 
     public void Update() {
@@ -22,6 +24,7 @@ public class CameraFollowScript : MonoBehaviour {
             this.audioSource.UnPause();
             this.printPoints();
             this.printAmmo();
+            this.printEnemyCount();
         }
     }
 
@@ -38,9 +41,6 @@ public class CameraFollowScript : MonoBehaviour {
     private void printPoints() {
         PlayerController player = target.gameObject.GetComponent<PlayerController>();
         pointsText.GetComponent<TMPro.TextMeshProUGUI>().text = "POINTS : " + player.getPoints();
-        PlayerShootingScript gunConfig = target.gameObject.GetComponentInChildren<PlayerShootingScript>();
-        gunConfig.addPurchasedGun("ShotGun");
-
     }
 
     private void printAmmo() {
@@ -48,5 +48,11 @@ public class CameraFollowScript : MonoBehaviour {
         currentAmmoText.GetComponent<TMPro.TextMeshProUGUI>().text = gunConfig.getCurrentWeapon() + " | " 
             + gunConfig.getCurrentAmmo() + " / "
             + gunConfig.getCurrentAmmoMax();
+    }
+
+    private void printEnemyCount() {
+        GameHandler gameHandler = this.gameHandler.GetComponentInChildren<GameHandler>();
+        enemyCountText.GetComponent<TMPro.TextMeshProUGUI>().text = ("ENEMIES : " 
+            +  gameHandler.getEnemiesCount().ToString());
     }
 }

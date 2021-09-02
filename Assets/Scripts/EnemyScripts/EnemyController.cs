@@ -9,6 +9,9 @@ public class EnemyController : MonoBehaviour{
     public ParticleSystem deathEffect;
 
 
+    public GameObject enemySpawner;
+
+
     public Rigidbody2D rigidbody2D;
     public int health;
 
@@ -17,8 +20,12 @@ public class EnemyController : MonoBehaviour{
     public float retratDistance;
     public int enemyHeadPoints = 15;
 
+    private GameHandler handler;
+
     void Start() {
         this.playerTarget = GameObject.Find("Player");
+        GameObject gameHandler = GameObject.Find("GameHandler");
+        this.handler = gameHandler.GetComponentInChildren<GameHandler>();
     }
 
     void Update() {
@@ -39,7 +46,7 @@ public class EnemyController : MonoBehaviour{
         FindObjectOfType<AudioManager>().play("death");
         deathEffect.startColor = Color.red;
         Instantiate(deathEffect,transform.position, Quaternion.identity);
-
+        handler.killEenemy();
         Destroy(gameObject);
     }
 

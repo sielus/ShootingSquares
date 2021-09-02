@@ -151,8 +151,9 @@ MonoBehaviour:
   jumpForce: 8
   dust: {fileID: 8356228839813659671}
   deathEffect: {fileID: 5802657389752989960, guid: 44071087e77e3d44592eaec8a80de185, type: 3}
+  enemySpawner: {fileID: 4428082906760967177, guid: f1caebed9434f6d4c9a5617180f3158a, type: 3}
   rigidbody2D: {fileID: 2729120221046152550}
-  health: 60
+  health: 40
   stoppingDistance: 7
   retratDistance: 4
   enemyHeadPoints: 15
@@ -171,7 +172,7 @@ MonoBehaviour:
   enemyController: {fileID: 2729120221046152568}
   gunHolder: {fileID: 2729120222172211833}
   firePoint: {fileID: 2729120222100548094}
-  bullet: {fileID: 4438804599051805622, guid: 022ce5e1005e90c4ca541d7140e99eed, type: 3}
+  bullet: {fileID: 5335922598994269034, guid: 217ef0bc74b727547b1b8ab6d0b2a907, type: 3}
   shootDelay: 1.5
 --- !u!1 &2729120221167548798
 GameObject:
