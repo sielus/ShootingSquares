@@ -19,8 +19,6 @@ public class Shop : MonoBehaviour{
         for (int index = 0; index < totalAllButtons; index++) {
             buttons[index] = this.transform.GetChild(index).gameObject;
         }
-
-
     }
 
     private void Update() {
@@ -44,6 +42,10 @@ public class Shop : MonoBehaviour{
         foreach (GameObject button in buttons) {
             button.gameObject.SetActive(active);
         }
+    }
+
+    public void continueGame() {
+        handler.startNextRound();
     }
 
 }
