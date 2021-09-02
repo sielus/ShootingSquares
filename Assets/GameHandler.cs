@@ -12,7 +12,7 @@ public class GameHandler : MonoBehaviour{
     public double spawnDelay = 1;
     private float timer = 0;
 
-
+    private bool roundPlaying = true;
 
     private int enemyCountMax = 1;
     private int enemyIndex = 0;
@@ -23,26 +23,31 @@ public class GameHandler : MonoBehaviour{
         this.player = GameObject.Find("Player");
         this.playerController = this.player.gameObject.GetComponent<PlayerController>();
         this.playerShooting = playerController.gameObject.GetComponentInChildren<PlayerShootingScript>();
-
-
-
-
     }
 
     void Update() {
-        Debug.LogError(playerController.getPoints());
-        playerShooting.addPurchasedGun("MachineGun");
 
-        playerShooting.addPurchasedGun("SniperGun");
         if (enemyIndex != enemyCountMax) {
             this.spawnEnemy();
         } else if(getEnemiesCount() == 0) {
-            enemyIndex = 0;
-            enemyCountMax += 1;
+            freeTime();
         }
     }
     
     
+    private void freeTime() {
+        roundPlaying = false;
+    }
+
+    public bool getRoundPlaying() {
+        return this.roundPlaying;
+    }
+
+    public void startNextRound() {
+        enemyIndex = 0;
+        enemyCountMax += 1;
+        roundPlaying = true;
+    }
 
     private void spawnEnemy() {
         if (this.getEnemiesCount() != enemyCountMax) {
@@ -62,5 +67,16 @@ public class GameHandler : MonoBehaviour{
 
     public void killEenemy() {
         this.enemySpawner.killEnemy();
+    }
+
+    public int getPlayerPoints() {
+        return this.playerController.getPoints();
+    }
+    public void takePlayerPoints(int points) {
+        this.playerController.takePoints(points);
+    }
+
+    public void buyWeapon(string weapon) {
+        playerShooting.addPurchasedGun(weapon);
     }
 }
